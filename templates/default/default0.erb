@@ -1,0 +1,42 @@
+upstream <%= node['thin_nginx']['app_name'] %> {
+	<% ports = 3000 %>
+	<% thins = 0 %>
+	<% while thins <= node['thin_nginx']['number_of_thins'].to_i %>
+		server 127.0.0.1:<%= ports.to_s %>;
+		<% ports += 1 %>
+		<% thins += 1 %>
+	<% end %>
+}
+
+server {
+	listen   80;
+	server_name <%= node['hostname'] %>;
+	
+	access_log /var/log/thin_access.log;
+	error_log /var/log/thin_error.log;
+	
+	root   <%= node['thin_nginx']['application_dir'] %>/public;
+
+	location / {
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Host $http_host;
+		proxy_redirect off;
+		
+		if (-f $request_filename/home.html) {
+		rewrite (.*) $1/home.html break;
+		}
+		
+		if (-f $request_filename.html) {
+		rewrite (.*) $1.html break;}
+		
+		if (!-f $request_filename) {
+		proxy_pass http://<%= node['hostname'] %>;
+		break;
+		}
+	}
+	error_page 500 502 503 504 /50x.html;
+	location = /50x.html {
+		root html;
+		}
+}
