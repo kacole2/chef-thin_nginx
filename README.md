@@ -11,7 +11,7 @@ Requirements
 - `rvm` - Sorry. but [rvm](https://github.com/fnichol/chef-rvm) is required because rvm_shell is needed to install Thin
 
 #### gems
-- `thin` - thin `version 1.6.1` is installed into your current rvm gemset. Solution didn't work correctly when installed to chef's embedded ruby
+- `thin -v 1.6.1` - thin's version 1.6.1 is installed into your current rvm gemset. Solution didn't work correctly when installed to chef's embedded ruby
 
 #### packages
 - `nginx` - nginx is installed from package
