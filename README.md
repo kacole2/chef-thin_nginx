@@ -94,9 +94,9 @@ Attributes
 Usage
 -----
 #### thin_nginx::default
-I haven't been able to successfully `override` an attribute with this cookbook. Make sure to change the key attributes above to have this cookbook work successfully.
+I haven't been able to successfully `override` an attribute with this cookbook from a different cookbook. Change the key attributes above to have this cookbook work successfully.
 
-Before use:
+Before running this cookbook: <br>
 1. `rvm::system` - use this recipe to install ruby across the entire node. Everything works successfully with `ruby-2.1.2`. <br>
 2. your application - run `git clone` on a git repository to the `/var/www/` directory
  
