@@ -1,13 +1,11 @@
 thin_nginx CHANGELOG
 ====================
 
-This file is used to list changes made in each version of the thin_nginx cookbook.
+All the changes
 
 0.1.0
 -----
-- [your_name] - Initial release of thin_nginx
+- [Kendrick Coleman] - Initial release of thin_nginx
 
 - - -
-Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
-
-The [Github Flavored Markdown page](http://github.github.com/github-flavored-markdown/) describes the differences between markdown on github and standard markdown.
+A [Kendrick Coleman Project](http://www.kendrickcoleman.com)
