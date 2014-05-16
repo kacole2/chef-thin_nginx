@@ -114,14 +114,13 @@ Include `thin_nginx` in your node's `run_list`:
 Contributing
 ------------
 I am not a software developer. Just a hack. Please contribute to make this better.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+<br>
+1. Fork the repository on Github<br>
+2. Create a named feature branch (like `add_component_x`)<br>
+3. Write your change<br>
+4. Write tests for your change (if applicable)<br>
+5. Run the tests, ensuring they all pass<br>
+6. Submit a Pull Request using Github<br>
 
 License and Authors
 -------------------
