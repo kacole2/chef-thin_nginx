@@ -33,6 +33,7 @@ default['thin_nginx']['rails_env'] = "appliance-production"
 default['thin_nginx']['ruby_version'] = "ruby-2.1.2"
 default['thin_nginx']['ruby_path'] = "/usr/local/rvm"
 default['thin_nginx']['rvm_source'] = "/usr/local/rvm/scripts/rvm"
+default['thin_nginx']['gemset'] = "default"
 
 #ruby environment parameters
 default['thin_nginx']['rvm_path'] = "#{node['thin_nginx']['ruby_path']}/gems/#{node['thin_nginx']['ruby_version']}/bin:#{node['thin_nginx']['ruby_path']}/gems/#{node['thin_nginx']['ruby_version']}@global/bin:#{node['thin_nginx']['ruby_path']}/rubies/#{node['thin_nginx']['ruby_version']}/bin"

@@ -3,18 +3,19 @@ thin_nginx Cookbook
 A super simple Thin and Nginx web and application service. <br>
 Why? I found opscode's nginx cookbook with passenger didn't work well. I found many people, as well as myself, getting 403 Forbidden errors with
 nginx using Rails 4. I've always had great success running [thin](http://code.macournoyer.com/thin/) with
-[nginx](http://nginx.org/). This solution is super simple and doesn't require a lot of parameters. 
+[nginx](http://nginx.org/). This solution is super simple and doesn't require a lot of confusing parameters. 
 
 Requirements
 ------------
 #### cookbooks
-- `rvm` - Sorry. but [rvm](https://github.com/fnichol/chef-rvm) is required because rvm_shell is needed to install Thin
+- `rvm` - Sorry. but [rvm](https://github.com/fnichol/chef-rvm) is required because rvm_shell is needed to install Thin from gem
 
 #### gems
-- `thin -v 1.6.1` - thin's version 1.6.1 is installed into your current rvm gemset. Solution didn't work correctly when installed to chef's embedded ruby
+- `thin -v 1.6.1` - thin's version 1.6.1 is installed into your current rvm gemset. Solution didn't work correctly when installed to chef's embedded ruby. I haven't had the 
+time to experiment installing thin directly from source. That would remove the constraint of RVM, but time wasn't on my side.
 
 #### packages
-- `nginx` - nginx is installed from package
+- `nginx` - nginx is installed from apt package. This does not use the nginx cookbook from opscode.
 
 #### supported OS
 Only tested on Ubuntu 12.04.3
@@ -32,7 +33,7 @@ Attributes
   <tr>
     <td><tt>['thin_nginx']['app_name']</tt></td>
     <td>String</td>
-    <td>you must set your application name here. this is typically the folder name used when cloning a git repository such as /var/www/`jumpsquares`.</td>
+    <td>you <b>must</b> set your application name here. this is typically the folder name used when cloning a git repository such as /var/www/`jumpsquares`.</td>
     <td><tt>"jumpsquares"</tt></td>
   </tr>
   <tr>
@@ -89,6 +90,12 @@ Attributes
     <td>Ruby source path for initiating console</td>
     <td><tt>"/usr/local/rvm/scripts/rvm"</tt></td>
   </tr>
+  <tr>
+    <td><tt>['thin_nginx']['gemset']</tt></td>
+    <td>String</td>
+    <td>What gemset should we use? By default none is used so lets keep it that way.</td>
+    <td><tt>"default"</tt></td>
+  </tr>
 </table>
 
 Usage
@@ -96,8 +103,8 @@ Usage
 #### thin_nginx::default
 I haven't been able to successfully `override` an attribute with this cookbook from a different cookbook. Change the key attributes above to have this cookbook work successfully.
 
-Before running this cookbook: <br>
-1. `rvm::system` - use this recipe to install ruby across the entire node. Everything works successfully with `ruby-2.1.2`. <br>
+Before running this cookbook include the following: <br>
+1. `rvm::system` - recipe will install ruby across the entire node. Everything works successfully with `ruby-2.1.2`. <br>
 2. your application - run `git clone` on a git repository to the `/var/www/` directory
  
 Include `thin_nginx` in your node's `run_list`:
@@ -113,7 +120,7 @@ Include `thin_nginx` in your node's `run_list`:
 
 Contributing
 ------------
-I am not a software developer. Just a hack. Please contribute to make this better.
+I am not a software developer by nature. Just a hack. Please contribute to make this better.
 <br>
 1. Fork the repository on Github<br>
 2. Create a named feature branch (like `add_component_x`)<br>
