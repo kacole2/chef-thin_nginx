@@ -1,9 +1,8 @@
 thin_nginx Cookbook
 ===================
 A super simple Thin and Nginx web and application service. <br>
-Why? I found opscode's nginx cookbook with passenger didn't work well. I found many people, as well as myself, getting 403 Forbidden errors with
-nginx using Rails 4. I've always had great success running [thin](http://code.macournoyer.com/thin/) with
-[nginx](http://nginx.org/). This solution is super simple and doesn't require a lot of confusing parameters. 
+Why? I found opscode's nginx cookbook with passenger had some quirks. Thin is lightweight and faster than Passenger for simple web apps. I've always had great success running [thin](http://code.macournoyer.com/thin/) with
+[nginx](http://nginx.org/), so I figure someone else would want this too. This solution is super simple and doesn't require a lot of confusing parameters. 
 
 Requirements
 ------------
